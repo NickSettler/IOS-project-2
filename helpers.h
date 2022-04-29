@@ -1,6 +1,12 @@
 #ifndef HELPERS_H
 #define HELPERS_H
 
+/**
+ * Returns random number between 0 and n
+ * @param n upper bound
+ */
+#define RAND_INT(n) (rand() % n)
+
 typedef struct args_t {
     int NO, NH, TI, TB;
 } args_t;
