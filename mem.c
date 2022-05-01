@@ -3,6 +3,7 @@
 #include <printf.h>
 #include <stdlib.h>
 #include <errno.h>
+#include <string.h>
 #include "mem.h"
 #include "atom.h"
 
@@ -13,17 +14,13 @@ mem_t *mem_init() {
 
     int shmid = shmget(key, sizeof(mem_t), 0666 | IPC_CREAT);
 
-    if (errno == -1) {
-        perror("shmget");
-        exit(1);
-    }
+    if (shmid == -1)
+        print_error("%s:%d %s\n", __FILE__, __LINE__, strerror(errno));
 
     void *mem_addr = shmat(shmid, NULL, 0);
 
-    if (errno == -1) {
-        perror("shmat");
-        exit(1);
-    }
+    if (mem_addr == (void *) -1)
+        print_error("%s:%d %s\n", __FILE__, __LINE__, strerror(errno));
 
     mem->mem_id = shmid;
     mem->mem_addr = mem_addr;
