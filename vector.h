@@ -1,24 +1,68 @@
 #ifndef VECTOR_H
 #define VECTOR_H
 
-// create vector type with specified size
-typedef struct {
-    int size;
-    int capacity;
-    int *data;
-} vector;
+/**
+ * @struct vector_t
+ * Vector of pointers to void
+ *
+ * @var vector_t::size
+ * Size of the vector
+ *
+ * @var vector_t::capacity
+ * Capacity of the vector
+ *
+ * @var vector_t::data
+ * Pointers to the data
+ */
+typedef struct vector_t {
+    /* Size of the vector */
+    unsigned int size;
+    /* Capacity of the vector */
+    unsigned int capacity;
+    /* Pointers to the data */
+    void **data;
+} vector_t;
 
 /**
- * Initialize vector.
- * @param capacity - initial capacity of vector.
- * @return
+ * Initialize vector_t.
+ * @param capacity - initial capacity of vector_t.
+ * @return - pointer to vector_t.
  */
-vector *vector_new(int capacity);
+vector_t *vector_new(unsigned int capacity);
 
 /**
- * Free vector.
- * @param v - vector to free.
+ * Push element to the end of vector_t.
+ * @param v - vector_t.
+ * @param data - data to be pushed.
  */
-void vector_destroy(vector *v);
+void vector_push(vector_t *v, void *data);
+
+
+/**
+ * Pop element from the end of vector_t.
+ * @param v - vector_t.
+ * @return - data from the end of vector_t.
+ */
+void *vector_pop(vector_t *v);
+
+/**
+ * Add element to the head of vector_t.
+ * @param v - vector_t.
+ * @param data - data to be added.
+ */
+void vector_unshift(vector_t *v, void *data);
+
+/**
+ * Remove element from the head of vector_t.
+ * @param v - vector_t.
+ * @return - data from the head of vector_t.
+ */
+void *vector_shift(vector_t *v);
+
+/**
+ * Free vector_t.
+ * @param v - vector_t to free.
+ */
+void vector_destroy(vector_t *v);
 
 #endif //VECTOR_H
