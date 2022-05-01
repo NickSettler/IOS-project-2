@@ -1,11 +1,13 @@
 #ifndef HELPERS_H
 #define HELPERS_H
 
+typedef enum { false, true } bool;
+
 /**
  * Returns random number between 0 and n
  * @param n upper bound
  */
-#define RAND_INT(n) (rand() % n)
+#define RAND_INT(n) (rand() % (n))
 
 typedef struct args_t {
     int NO, NH, TI, TB;
