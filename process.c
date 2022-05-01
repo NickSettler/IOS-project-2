@@ -4,8 +4,6 @@
 #include "process.h"
 #include "helpers.h"
 
-
-
 void sub_process_run(process_cfg_t *cfg) {
     unsigned int line = cfg->mem->line;
     unsigned int id = cfg->atom->id;
