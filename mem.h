@@ -3,6 +3,7 @@
 
 #include <sys/semaphore.h>
 #include "main.h"
+#include "vector.h"
 
 typedef struct mem_t {
     int mem_id;
@@ -12,9 +13,11 @@ typedef struct mem_t {
     unsigned int h_count;
     unsigned int current_o;
     unsigned int o_count;
-    unsigned int m_count;
+    unsigned int current_m;
     unsigned int atom_time;
     unsigned int molecule_time;
+    vector_t *o_vector;
+    vector_t *h_vector;
 } mem_t;
 
 /**
