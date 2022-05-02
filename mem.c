@@ -29,7 +29,7 @@ mem_t *mem_init() {
 }
 
 void mem_fill(mem_t *mem, int NO, int NH, int TI, int TB) {
-    mem->line = 1;
+    mem->line = 0;
     mem->o_count = NO;
     mem->h_count = NH;
     mem->current_m = 1;
@@ -49,9 +49,12 @@ void mem_fill(mem_t *mem, int NO, int NH, int TI, int TB) {
         atom_t *atom = atom_create(i, HYDROGEN);
         vector_push(mem->h_vector, atom);
     }
+
+    semaphores_init(mem);
 }
 
 void mem_destroy(mem_t *mem) {
+    semaphores_destroy(mem);
     vector_destroy(mem->o_vector);
     vector_destroy(mem->h_vector);
     shmdt(mem->mem_addr);

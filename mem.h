@@ -1,7 +1,7 @@
 #ifndef MEM_H
 #define MEM_H
 
-#include <sys/semaphore.h>
+#include <semaphore.h>
 #include "main.h"
 #include "vector.h"
 #include "semaphores.h"
