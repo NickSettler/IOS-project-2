@@ -67,7 +67,7 @@ int main(int argc, char **argv) {
             output_to_file(mem, ATOM_FROM_QUEUE, &process);
             sem_post(semaphores.output_sem);
 
-            if (++mem->current_m >= 2) {
+            if (++mem->current_m_h >= 2) {
                 sem_post(semaphores.creating_sem);
                 sem_post(semaphores.creating_sem);
                 sem_post(semaphores.creating_sem);

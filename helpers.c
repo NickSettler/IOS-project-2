@@ -79,11 +79,12 @@ void output_to_file(mem_t *mem, MESSAGE_TYPE type, process_t *process) {
             fprintf(output, "%d: %c %d: going to queue\n", mem->line, process->atom.type, process->atom.id);
             break;
         case ATOM_FROM_QUEUE:
-            fprintf(output, "%d: %c %d: creating molecule\n", mem->line, process->atom.type, process->atom.id);
+            fprintf(output, "%d: %c %d: creating molecule %u\n", mem->line, process->atom.type, process->atom.id,
+                    mem->m_id);
             break;
         case ATOM_READY:
             fprintf(output, "%d: %c %d: molecule %d created\n", mem->line, process->atom.type, process->atom.id,
-                    mem->current_m);
+                    mem->m_id);
             break;
         case ATOM_INSUFFICIENT_H:
             fprintf(output, "%d: %c %d: not enough O or H\n", mem->line, process->atom.type, process->atom.id);
