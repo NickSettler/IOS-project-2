@@ -1,7 +1,7 @@
 CC=gcc
 CC_FLAGS=-std=gnu99 -Wall -Wextra -Werror -Wno-deprecated -pedantic
 
-SOURCES = helpers.c vector.c mem.c semaphores.c atom.c process.c main.c
+SOURCES = helpers.c mem.c semaphores.c atom.c process.c main.c
 
 TARGET = proj2
 TARGET_ARGS = 3 5 100 100

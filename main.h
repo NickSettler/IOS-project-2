@@ -3,7 +3,6 @@
 
 #include <semaphore.h>
 #include <stdbool.h>
-#include "vector.h"
 
 typedef struct args_t {
     int NO, NH, TI, TB, EH, EO;
@@ -66,10 +65,6 @@ typedef struct mem_t {
     unsigned int atom_time;
     /* Max time needed to create molecule */
     unsigned int molecule_time;
-    /* Vector of oxygen atoms */
-    vector_t *o_vector;
-    /* Vector of hydrogen atoms */
-    vector_t *h_vector;
     /* Semaphores */
     semaphores_t *semaphores;
     /* Output file */

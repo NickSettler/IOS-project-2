@@ -3,7 +3,6 @@
 
 #include <semaphore.h>
 #include "main.h"
-#include "vector.h"
 #include "semaphores.h"
 
 /**
