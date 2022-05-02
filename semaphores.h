@@ -4,7 +4,7 @@
 #include <semaphore.h>
 #include "main.h"
 
-#define SEM_INIT(k, v)(sem_open(k, O_CREAT | O_WRONLY, 0666, v))
+#define SEM_INIT(k, v)(sem_open(k, O_CREAT | O_EXCL, 0666, v))
 
 #define OUTPUT_SEM "output_sem"
 #define H_SEM "h_sem"

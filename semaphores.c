@@ -6,6 +6,8 @@
 #include "helpers.h"
 
 void semaphores_init(semaphores_t *semaphores) {
+    semaphores_unlink();
+
     if (semaphores == NULL) {
         ERROR
         exit(EXIT_FAILURE);
@@ -40,8 +42,6 @@ void semaphores_init(semaphores_t *semaphores) {
         ERROR
         exit(EXIT_FAILURE);
     }
-
-    semaphores_unlink();
 }
 
 void semaphores_unlink() {
