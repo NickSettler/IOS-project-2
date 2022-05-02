@@ -26,12 +26,9 @@ void mem_fill(mem_t *mem) {
 //    mem->current_m_h = 0;
 //    mem->current_h = 0;
 //    mem->current_o = 0;
-    mem->output_file = open_output();
 }
 
 void mem_destroy(mem_t *mem) {
-    close_output(mem->output_file);
-
     key_t key = mem->mem_id;
 
     int control_result = shmctl(key, IPC_RMID, NULL);

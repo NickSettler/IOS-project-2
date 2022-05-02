@@ -55,8 +55,6 @@ typedef struct mem_t {
     id_t m_id;
     uint current_m_h;
     uint current_m;
-    /* Output file */
-    FILE *output_file;
 } mem_t;
 
 typedef struct process_t {
