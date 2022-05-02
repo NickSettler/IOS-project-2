@@ -62,7 +62,7 @@ void vector_destroy(vector_t *v) {
     for (unsigned int i = 0; i < v->size; i++) {
         free(v->data[i]);
     }
-    
+
     free(v->data);
     free(v);
 }

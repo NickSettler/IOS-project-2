@@ -1,8 +1,6 @@
 #ifndef HELPERS_H
 #define HELPERS_H
 
-typedef enum { false, true } bool;
-
 /**
  * Returns random number between 0 and n
  * @param n upper bound

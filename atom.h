@@ -1,6 +1,7 @@
 #ifndef ATOM_H
 #define ATOM_H
 
+#include <stdbool.h>
 #include "helpers.h"
 
 typedef enum ATOM_TYPE {
