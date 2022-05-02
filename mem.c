@@ -1,11 +1,9 @@
 #include <sys/ipc.h>
 #include <sys/shm.h>
 #include <printf.h>
-#include <stdlib.h>
 #include <errno.h>
 #include <string.h>
 #include "mem.h"
-#include "atom.h"
 
 mem_t *mem_init() {
     key_t key = ftok("main.c", 'c');
