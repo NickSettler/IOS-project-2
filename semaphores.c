@@ -15,7 +15,7 @@ void semaphores_init(mem_t *mem) {
         exit(EXIT_FAILURE);
     }
 
-    semaphores->output_sem = sem_open("output_sem", O_CREAT | O_EXCL, 0777, 0);
+    semaphores->output_sem = sem_open("output_sem", O_CREAT | O_EXCL, S_IRWXU, 1);
 
     if (semaphores->output_sem == SEM_FAILED) {
         print_error("%s:%d %s\n", __FILE__, __LINE__, strerror(errno));
