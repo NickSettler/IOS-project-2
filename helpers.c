@@ -62,6 +62,11 @@ void close_output(FILE *output) {
         ERROR
 }
 
+void remove_output() {
+    if (remove(OUTPUT_FILE_NAME) != 0)
+        ERROR
+}
+
 void output_to_file(mem_t *mem, MESSAGE_TYPE type, process_t *process) {
     FILE *output = fopen(OUTPUT_FILE_NAME, OUTPUT_FILE_MODE);
     mem->line += 1;

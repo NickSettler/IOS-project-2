@@ -4,6 +4,8 @@
 #include "process.h"
 
 int main(int argc, char **argv) {
+    remove_output();
+
     args_t args;
     parse_args(&args, argc, argv);
 

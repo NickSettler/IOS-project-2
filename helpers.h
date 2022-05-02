@@ -19,7 +19,7 @@
 #define RAND_INT(n) (rand() % (n))
 
 #define OUTPUT_FILE_NAME "proj2.out"
-#define OUTPUT_FILE_MODE "w"
+#define OUTPUT_FILE_MODE "a"
 
 /**
  * Parsing arguments
@@ -34,6 +34,8 @@ void print_error(char *format, ...) __printflike__;
 FILE *open_output();
 
 void close_output(FILE *output);
+
+void remove_output();
 
 void output_to_file(mem_t *mem, MESSAGE_TYPE type, process_t *process);
 
