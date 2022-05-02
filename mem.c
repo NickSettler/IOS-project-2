@@ -30,7 +30,9 @@ void mem_fill(mem_t *mem, int NO, int NH, int TI, int TB) {
     mem->line = 0;
     mem->o_count = NO;
     mem->h_count = NH;
-    mem->current_m = 1;
+    mem->current_m = 0;
+    mem->m_id = 0;
+    mem->current_m_h = 0;
     mem->atom_time = TI;
     mem->molecule_time = TB;
     mem->current_h = 0;

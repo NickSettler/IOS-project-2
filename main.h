@@ -59,6 +59,8 @@ typedef struct mem_t {
     unsigned int current_o;
     /* Number of oxygen */
     unsigned int o_count;
+    id_t m_id;
+    unsigned int current_m_h;
     unsigned int current_m;
     /* Max time needed to create atom */
     unsigned int atom_time;
@@ -77,6 +79,7 @@ typedef struct mem_t {
 typedef struct process_t {
     pid_t pid;
     atom_t atom;
+    bool extra_info;
 } process_t;
 
 #endif
