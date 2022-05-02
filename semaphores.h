@@ -6,6 +6,8 @@
 
 void semaphores_init(mem_t *mem);
 
+void semaphores_unlink();
+
 void semaphores_destroy(mem_t *mem);
 
 #endif //SEMAPHORES_H

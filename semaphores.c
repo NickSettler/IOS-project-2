@@ -7,6 +7,8 @@
 #include "helpers.h"
 
 void semaphores_init(mem_t *mem) {
+    semaphores_unlink();
+
     semaphores_t *semaphores = malloc(sizeof(semaphores_t));
     if (semaphores == NULL) {
         print_error("%s:%d %s\n", __FILE__, __LINE__, strerror(errno));
@@ -23,6 +25,10 @@ void semaphores_init(mem_t *mem) {
     mem->semaphores = semaphores;
 }
 
+void semaphores_unlink() {
+    sem_unlink("output_sem");
+}
+
 void semaphores_destroy(mem_t *mem) {
     semaphores_t *semaphores = mem->semaphores;
 
@@ -31,7 +37,7 @@ void semaphores_destroy(mem_t *mem) {
     if (close_result == -1)
         print_error("%s:%d %s\n", __FILE__, __LINE__, strerror(errno));
 
-    sem_unlink("output_sem");
+    semaphores_unlink();
 
     free(semaphores);
 }
