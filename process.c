@@ -8,21 +8,30 @@
 
 void sub_process_oxygen(mem_t *mem, unsigned int atom_id) {
     sem_wait(mem->semaphores->output_sem);
-    atom_t *atom;
-    for(int i = 0; i < mem->o_count; i++){
+    atom_t *atom = NULL;
+    for (unsigned int i = 0; i < mem->o_count; i++) {
         atom_t *loop_atom = mem->o_vector->data[i];
 
-        if(loop_atom->id == atom_id)
+        if (loop_atom->id == atom_id) {
             atom = loop_atom;
+            break;
+        }
     }
-    printf("%du: %c %du: started\n", mem->line++, atom->type, atom->id);
+
+    if(atom == NULL)
+        print_error("Could not find atom with id %d\n", atom_id);
+
+    mem->line++;
+    printf("%d: %c %d: started\n", mem->line, atom->type, atom->id);
     sem_post(mem->semaphores->output_sem);
 
     usleep(RAND_INT(mem->atom_time));
+
+    exit(0);
 }
 
 void main_process(mem_t *mem) {
-    for (long i = 0; i < mem->o_count; i++) {
+    for (int i = 0; i < mem->o_count; i++) {
         pid_t oxygen_pid = fork();
         if (oxygen_pid < 0) {
             print_error("Oxygen process creation failed\n"
