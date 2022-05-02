@@ -62,6 +62,8 @@ typedef struct mem_t {
     vector_t *h_vector;
     /* Semaphores */
     semaphores_t *semaphores;
+    /* Output file */
+    FILE *output_file;
 } mem_t;
 
 #endif

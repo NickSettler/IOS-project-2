@@ -31,4 +31,10 @@ args_t* parse_args(int argc, char **argv);
 
 void print_error(char *format, ...) __printflike__;
 
+FILE *open_output();
+
+void close_output(FILE *output);
+
+void output_to_file(mem_t *mem, MESSAGE_TYPE type, process_t *process);
+
 #endif //HELPERS_H

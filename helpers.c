@@ -40,3 +40,47 @@ void print_error(char *format, ...) {
     va_end(strings);
 }
 
+FILE *open_output() {
+    FILE *output = fopen(OUTPUT_FILE_NAME, OUTPUT_FILE_MODE);
+
+    if (output == NULL)
+        ERROR
+
+    return output;
+}
+
+void close_output(FILE *output) {
+    if (fclose(output) != 0)
+        ERROR
+}
+
+void output_to_file(mem_t *mem, MESSAGE_TYPE type, process_t *process) {
+    FILE *output = mem->output_file;
+    output = stdout;
+    mem->line += 1;
+
+    switch (type) {
+        case ATOM_CREATED:
+            fprintf(output, "%d: %c %d: started\n", mem->line, process->atom.type, process->atom.id);
+            break;
+        case ATOM_TO_QUEUE:
+            fprintf(output, "%d: %c %d: going to queue\n", mem->line, process->atom.type, process->atom.id);
+            break;
+        case ATOM_FROM_QUEUE:
+            fprintf(output, "%d: %c %d: creating molecule\n", mem->line, process->atom.type, process->atom.id);
+            break;
+        case ATOM_READY:
+            fprintf(output, "%d: %c %d: molecule %d created\n", mem->line, process->atom.type, process->atom.id,
+                    mem->current_m);
+            break;
+        case ATOM_INSUFFICIENT_H:
+            fprintf(output, "%d: %c %d: not enough O or H\n", mem->line, process->atom.type, process->atom.id);
+            break;
+        case ATOM_INSUFFICIENT_O:
+            fprintf(output, "%d: %c %d: not enough H\n", mem->line, process->atom.type, process->atom.id);
+            break;
+        default:
+            break;
+    }
+}
+

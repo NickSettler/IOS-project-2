@@ -37,6 +37,7 @@ void mem_fill(mem_t *mem, int NO, int NH, int TI, int TB) {
     mem->current_o = 0;
     mem->o_vector = vector_new(NO);
     mem->h_vector = vector_new(NH);
+    mem->output_file = open_output();
 
     for (unsigned int i = 0; i < mem->o_vector->capacity; i++) {
         atom_t *atom = atom_create(i, OXYGEN);
@@ -52,6 +53,7 @@ void mem_fill(mem_t *mem, int NO, int NH, int TI, int TB) {
 }
 
 void mem_destroy(mem_t *mem) {
+    close_output(mem->output_file);
     semaphores_destroy(mem);
     vector_destroy(mem->o_vector);
     vector_destroy(mem->h_vector);
