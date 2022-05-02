@@ -1,5 +1,5 @@
 CC=gcc
-CC_FLAGS=-std=gnu99 -Wall -Wextra -Werror -Wno-deprecated -pedantic -pthreads
+CC_FLAGS=-std=gnu99 -Wall -Wextra -Werror -Wno-deprecated -pedantic -pthread
 
 SOURCES = helpers.c mem.c semaphores.c process.c main.c
 
