@@ -4,7 +4,8 @@
 #include "process.h"
 
 int main(int argc, char **argv) {
-    args_t *args = parse_args(argc, argv);
+    args_t args;
+    parse_args(&args, argc, argv);
 
     semaphores_t semaphores;
     semaphores_init(&semaphores);
@@ -14,16 +15,16 @@ int main(int argc, char **argv) {
     process_t process;
     pid_t main_id = getpid();
 
-    if (args->EH == 0 && args->EO == 0) {
+    if (args.EH == 0 && args.EO == 0) {
         sem_post(semaphores.stop_extra_sem);
     }
 
     if (main_id == getpid()) {
-        process = fork_process(args->NO, OXYGEN);
+        process = fork_process(args.NO, OXYGEN);
     }
 
     if (main_id == getpid()) {
-        process = fork_process(args->NH, HYDROGEN);
+        process = fork_process(args.NH, HYDROGEN);
     }
 
     if (main_id != getpid()) {
@@ -33,7 +34,7 @@ int main(int argc, char **argv) {
 
         sem_post(semaphores.output_sem);
 
-        usleep(RAND_INT(args->TI));
+        usleep(RAND_INT(args.TI));
 
         sem_wait(semaphores.output_sem);
 
@@ -44,11 +45,11 @@ int main(int argc, char **argv) {
         switch (process.atom.type) {
             case HYDROGEN:
                 mem->current_h++;
-                process.extra_info = args->EH < mem->current_h;
+                process.extra_info = args.EH < mem->current_h;
                 break;
             case OXYGEN:
                 mem->current_o++;
-                process.extra_info = args->EO < mem->current_o;
+                process.extra_info = args.EO < mem->current_o;
                 break;
         }
 
@@ -73,7 +74,7 @@ int main(int argc, char **argv) {
 
             sem_wait(semaphores.creating_sem);
 
-            usleep(RAND_INT(args->TB));
+            usleep(RAND_INT(args.TB));
 
             sem_wait(semaphores.output_sem);
 
@@ -101,7 +102,7 @@ int main(int argc, char **argv) {
 
             sem_wait(semaphores.creating_sem);
 
-            usleep(RAND_INT(args->TB));
+            usleep(RAND_INT(args.TB));
 
             sem_wait(semaphores.output_sem);
 
@@ -112,7 +113,7 @@ int main(int argc, char **argv) {
             sem_wait(semaphores.ready_sem);
             sem_wait(semaphores.ready_sem);
 
-            if (args->EO == mem->m_id) {
+            if (args.EO == mem->m_id) {
                 sem_post(semaphores.stop_extra_sem);
             }
 

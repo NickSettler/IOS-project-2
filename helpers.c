@@ -1,8 +1,6 @@
 #include "helpers.h"
 
-args_t *parse_args(int argc, char **argv) {
-    args_t *args = malloc(sizeof(args_t));
-
+void parse_args(args_t *args, int argc, char **argv) {
     if (argc < 5) {
         print_error("Not enough arguments\n"
                     "Usage: ./%s NO NH TI TB\n", argv[0]);
@@ -38,8 +36,6 @@ args_t *parse_args(int argc, char **argv) {
     } else {
         args->EO = args->EH / 2;
     }
-
-    return args;
 }
 
 void print_error(char *format, ...) {
