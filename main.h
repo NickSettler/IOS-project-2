@@ -48,25 +48,13 @@ typedef struct semaphores_t {
 typedef struct mem_t {
     /* Shared memory id */
     int mem_id;
-    /* Shared memory pointer */
-    void *mem_addr;
     /* Current output line */
     uint line;
     uint current_h;
-    /* Number of hydrogen */
-    uint h_count;
     uint current_o;
-    /* Number of oxygen */
-    uint o_count;
     id_t m_id;
     uint current_m_h;
     uint current_m;
-    /* Max time needed to create atom */
-    uint atom_time;
-    /* Max time needed to create molecule */
-    uint molecule_time;
-    /* Semaphores */
-    semaphores_t *semaphores;
     /* Output file */
     FILE *output_file;
 } mem_t;
