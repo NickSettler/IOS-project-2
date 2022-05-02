@@ -14,10 +14,10 @@
 #define CREATING_SEM "creating_sem"
 #define STOP_EXTRA_SEM "stop_extra_sem"
 
-void semaphores_init(mem_t *mem);
+semaphores_t *semaphores_init();
 
 void semaphores_unlink();
 
-void semaphores_destroy(mem_t *mem);
+void semaphores_destroy(semaphores_t *semaphores);
 
 #endif //SEMAPHORES_H
