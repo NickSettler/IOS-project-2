@@ -21,7 +21,7 @@ void sub_process_oxygen(mem_t *mem, unsigned int atom_id) {
 
     usleep(RAND_INT(mem->atom_time));
 
-    exit(0);
+    exit(EXIT_SUCCESS);
 }
 
 void main_process(mem_t *mem) {

@@ -57,7 +57,11 @@ void mem_destroy(mem_t *mem) {
     semaphores_destroy(mem);
     vector_destroy(mem->o_vector);
     vector_destroy(mem->h_vector);
-    shmdt(mem->mem_addr);
-    shmctl(mem->mem_id, IPC_RMID, NULL);
+
+    int unmap_result = shmdt(mem->mem_addr);
+    if (unmap_result == -1) ERROR
+
+    int control_result = shmctl(mem->mem_id, IPC_RMID, NULL);
+    if (control_result == -1) ERROR
     free(mem);
 }
