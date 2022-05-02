@@ -23,7 +23,7 @@ typedef enum ATOM_TYPE {
 } ATOM_TYPE;
 
 typedef struct atom_t {
-    unsigned int id;
+    uint id;
     ATOM_TYPE type;
     bool ready;
 } atom_t;
@@ -51,20 +51,20 @@ typedef struct mem_t {
     /* Shared memory pointer */
     void *mem_addr;
     /* Current output line */
-    unsigned int line;
-    unsigned int current_h;
+    uint line;
+    uint current_h;
     /* Number of hydrogen */
-    unsigned int h_count;
-    unsigned int current_o;
+    uint h_count;
+    uint current_o;
     /* Number of oxygen */
-    unsigned int o_count;
+    uint o_count;
     id_t m_id;
-    unsigned int current_m_h;
-    unsigned int current_m;
+    uint current_m_h;
+    uint current_m;
     /* Max time needed to create atom */
-    unsigned int atom_time;
+    uint atom_time;
     /* Max time needed to create molecule */
-    unsigned int molecule_time;
+    uint molecule_time;
     /* Semaphores */
     semaphores_t *semaphores;
     /* Output file */
