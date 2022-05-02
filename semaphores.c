@@ -11,7 +11,7 @@ void semaphores_init(semaphores_t *semaphores) {
         exit(EXIT_FAILURE);
     }
 
-    if ((semaphores->output_sem = SEM_INIT(OUTPUT_SEM, 0)) == SEM_FAILED) {
+    if ((semaphores->output_sem = SEM_INIT(OUTPUT_SEM, 1)) == SEM_FAILED) {
         ERROR
         exit(EXIT_FAILURE);
     }
@@ -21,7 +21,7 @@ void semaphores_init(semaphores_t *semaphores) {
         exit(EXIT_FAILURE);
     }
 
-    if ((semaphores->o_sem = SEM_INIT(O_SEM, 0)) == SEM_FAILED) {
+    if ((semaphores->o_sem = SEM_INIT(O_SEM, 1)) == SEM_FAILED) {
         ERROR
         exit(EXIT_FAILURE);
     }
