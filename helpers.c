@@ -49,8 +49,7 @@ void print_error(char *format, ...) {
 }
 
 void remove_output() {
-    if (remove(OUTPUT_FILE_NAME) != 0)
-        ERROR
+    remove(OUTPUT_FILE_NAME);
 }
 
 void output_to_file(mem_t *mem, MESSAGE_TYPE type, process_t *process) {
