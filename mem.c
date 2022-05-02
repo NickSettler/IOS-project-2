@@ -19,7 +19,7 @@ mem_t *mem_init() {
     return mem;
 }
 
-void mem_fill(mem_t *mem, int NO, int NH, int TI, int TB) {
+void mem_fill(mem_t *mem) {
 //    mem->line = 0;
 //    mem->current_m = 0;
 //    mem->m_id = 0;

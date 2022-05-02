@@ -9,7 +9,7 @@ int main(int argc, char **argv) {
     semaphores_t semaphores;
     semaphores_init(&semaphores);
     mem_t *mem = mem_init();
-    mem_fill(mem, args->NO, args->NH, args->TI, args->TB);
+    mem_fill(mem);
 
     process_t process;
     pid_t main_id = getpid();

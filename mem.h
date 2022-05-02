@@ -3,6 +3,7 @@
 
 #include <semaphore.h>
 #include "main.h"
+#include "helpers.h"
 #include "semaphores.h"
 
 /**
@@ -11,7 +12,7 @@
  */
 mem_t *mem_init();
 
-void mem_fill(mem_t *mem, int NO, int NH, int TI, int TB);
+void mem_fill(mem_t *mem);
 
 /**
  * Destroy memory

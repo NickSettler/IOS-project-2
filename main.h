@@ -1,11 +1,12 @@
 #ifndef MAIN_H
 #define MAIN_H
 
+#include <stdio.h>
 #include <semaphore.h>
 #include <stdbool.h>
 
 typedef struct args_t {
-    int NO, NH, TI, TB, EH, EO;
+    uint NO, NH, TI, TB, EH, EO;
 } args_t;
 
 typedef enum MESSAGE_TYPE {
@@ -25,7 +26,6 @@ typedef enum ATOM_TYPE {
 typedef struct atom_t {
     uint id;
     ATOM_TYPE type;
-    bool ready;
 } atom_t;
 
 typedef struct semaphores_t {
