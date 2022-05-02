@@ -1,16 +1,25 @@
 #ifndef HELPERS_H
 #define HELPERS_H
 
+#include <string.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdarg.h>
+#include <errno.h>
+#include "main.h"
+#include "process.h"
+
+#define ERROR print_error("%s:%d %s\n", __FILE__, __LINE__, strerror(errno));
+
+#define __printflike__ __attribute__((format(printf, 1, 2)))
 /**
  * Returns random number between 0 and n
  * @param n upper bound
  */
-#define __printflike__ __attribute__((format(printf, 1, 2)))
 #define RAND_INT(n) (rand() % (n))
 
-typedef struct args_t {
-    int NO, NH, TI, TB;
-} args_t;
+#define OUTPUT_FILE_NAME "proj2.out"
+#define OUTPUT_FILE_MODE "w"
 
 /**
  * Parsing arguments
