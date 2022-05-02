@@ -9,8 +9,8 @@ typedef struct process_cfg_t {
     atom_t *atom;
 } process_cfg_t;
 
-void sub_process_oxygen(mem_t *mem, atom_t *atom);
+void sub_process_oxygen(mem_t *mem, unsigned int atom_id);
 
-void sub_process_run(process_cfg_t *cfg);
+void main_process(mem_t *mem);
 
 #endif //PROCESS_H
