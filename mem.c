@@ -19,15 +19,6 @@ mem_t *mem_init() {
     return mem;
 }
 
-void mem_fill(mem_t *mem) {
-//    mem->line = 0;
-//    mem->current_m = 0;
-//    mem->m_id = 0;
-//    mem->current_m_h = 0;
-//    mem->current_h = 0;
-//    mem->current_o = 0;
-}
-
 void mem_destroy(mem_t *mem) {
     key_t key = mem->mem_id;
 

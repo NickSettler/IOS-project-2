@@ -12,8 +12,6 @@
  */
 mem_t *mem_init();
 
-void mem_fill(mem_t *mem);
-
 /**
  * Destroy memory
  * @param mem - memory to destroy
