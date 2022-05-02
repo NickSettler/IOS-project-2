@@ -6,7 +6,7 @@
 #include <stdbool.h>
 
 typedef struct args_t {
-    uint NO, NH, TI, TB, EH, EO;
+    unsigned int NO, NH, TI, TB, EH, EO;
 } args_t;
 
 typedef enum MESSAGE_TYPE {
@@ -29,7 +29,7 @@ typedef enum ATOM_TYPE {
  */
 typedef struct atom_t {
     /* ID of the atom */
-    uint id;
+    unsigned int id;
     /* Type of the atom */
     ATOM_TYPE type;
 } atom_t;
@@ -61,15 +61,15 @@ typedef struct mem_t {
     /* Shared memory id */
     int mem_id;
     /* Current output line */
-    uint line;
+    unsigned int line;
     /* Current hydrogen to work with */
-    uint current_h;
+    unsigned int current_h;
     /* Current oxygen to work with */
-    uint current_o;
+    unsigned int current_o;
     /* ID of current molecule */
-    id_t m_id;
+    unsigned int m_id;
     /* Number of hydrogen atoms of the molecule */
-    uint current_m_h;
+    unsigned int current_m_h;
 } mem_t;
 
 /**
