@@ -6,7 +6,7 @@
 #include "vector.h"
 
 typedef struct args_t {
-    int NO, NH, TI, TB;
+    int NO, NH, TI, TB, EH, EO;
 } args_t;
 
 typedef enum MESSAGE_TYPE {

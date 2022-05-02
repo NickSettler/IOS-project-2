@@ -26,6 +26,18 @@ args_t *parse_args(int argc, char **argv) {
     args->NH = (int) NH;
     args->TI = (int) TI;
     args->TB = (int) TB;
+    args->EO = (int) NO;
+    args->EH = (int) NH;
+
+    if (args->NH % 2 == 1) {
+        args->EH--;
+    }
+
+    if (args->NH >= args->NO * 2) {
+        args->EH = args->EO * 2;
+    } else {
+        args->EO = args->EH / 2;
+    }
 
     return args;
 }

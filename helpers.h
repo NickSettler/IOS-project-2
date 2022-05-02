@@ -27,7 +27,7 @@
  * @param argv - array of arguments
  * @return - parsed arguments
  */
-args_t* parse_args(int argc, char **argv);
+args_t *parse_args(int argc, char **argv);
 
 void print_error(char *format, ...) __printflike__;
 
