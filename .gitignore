@@ -3,3 +3,4 @@ CMakeLists.txt
 cmake-build-debug
 proj2
 proj2.out
+*.sh
