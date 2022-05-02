@@ -3,6 +3,8 @@
 #include <unistd.h>
 #include <string.h>
 #include <errno.h>
+#include <semaphore.h>
+#include <stdio.h>
 #include "process.h"
 #include "helpers.h"
 
@@ -31,7 +33,7 @@ void sub_process_oxygen(mem_t *mem, unsigned int atom_id) {
 }
 
 void main_process(mem_t *mem) {
-    for (int i = 0; i < mem->o_count; i++) {
+    for (unsigned int i = 0; i < mem->o_count; i++) {
         pid_t oxygen_pid = fork();
         if (oxygen_pid < 0) {
             print_error("Oxygen process creation failed\n"

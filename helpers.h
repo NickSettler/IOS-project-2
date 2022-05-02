@@ -5,6 +5,7 @@
  * Returns random number between 0 and n
  * @param n upper bound
  */
+#define __printflike__ __attribute__((format(printf, 1, 2)))
 #define RAND_INT(n) (rand() % (n))
 
 typedef struct args_t {
@@ -19,6 +20,6 @@ typedef struct args_t {
  */
 args_t* parse_args(int argc, char **argv);
 
-void print_error(char *format, ...) __printflike(1, 2);
+void print_error(char *format, ...) __printflike__;
 
 #endif //HELPERS_H

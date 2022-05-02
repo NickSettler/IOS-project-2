@@ -13,7 +13,7 @@ void semaphores_init(mem_t *mem) {
         exit(EXIT_FAILURE);
     }
 
-    semaphores->output_sem = sem_open("output_sem", O_CREAT | O_EXCL, S_IRWXU, 0);
+    semaphores->output_sem = sem_open("output_sem", O_CREAT | O_EXCL, 0777, 0);
 
     if (semaphores->output_sem == SEM_FAILED) {
         print_error("%s:%d %s\n", __FILE__, __LINE__, strerror(errno));
@@ -31,10 +31,7 @@ void semaphores_destroy(mem_t *mem) {
     if (close_result == -1)
         print_error("%s:%d %s\n", __FILE__, __LINE__, strerror(errno));
 
-    int unlink_result = sem_unlink("output_sem");
-
-    if (unlink_result == -1)
-        print_error("%s:%d %s\n", __FILE__, __LINE__, strerror(errno));
+    sem_unlink("output_sem");
 
     free(semaphores);
 }
