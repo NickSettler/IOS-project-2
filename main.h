@@ -32,6 +32,14 @@ typedef struct atom_t {
 typedef struct semaphores_t {
     /* Semaphore for output to the console */
     sem_t *output_sem;
+    /* Semaphore for hydrogen atom creation */
+    sem_t *h_sem;
+    /* Semaphore for oxygen atom creation */
+    sem_t *o_sem;
+    sem_t *ready_sem;
+    sem_t *created_sem;
+    sem_t *creating_sem;
+    sem_t *stop_extra_sem;
 } semaphores_t;
 
 /**

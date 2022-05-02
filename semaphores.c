@@ -15,9 +15,37 @@ void semaphores_init(mem_t *mem) {
         exit(EXIT_FAILURE);
     }
 
-    semaphores->output_sem = sem_open("output_sem", O_CREAT | O_EXCL, S_IRWXU, 1);
+    if ((semaphores->output_sem = SEM_INIT(OUTPUT_SEM, 0)) == SEM_FAILED) {
+        ERROR
+        exit(EXIT_FAILURE);
+    }
 
-    if (semaphores->output_sem == SEM_FAILED) {
+    if ((semaphores->h_sem = SEM_INIT(H_SEM, 0)) == SEM_FAILED) {
+        ERROR
+        exit(EXIT_FAILURE);
+    }
+
+    if ((semaphores->o_sem = SEM_INIT(O_SEM, 0)) == SEM_FAILED) {
+        ERROR
+        exit(EXIT_FAILURE);
+    }
+
+    if ((semaphores->ready_sem = SEM_INIT(READY_SEM, 0)) == SEM_FAILED) {
+        ERROR
+        exit(EXIT_FAILURE);
+    }
+
+    if ((semaphores->created_sem = SEM_INIT(CREATED_SEM, 0)) == SEM_FAILED) {
+        ERROR
+        exit(EXIT_FAILURE);
+    }
+
+    if ((semaphores->creating_sem = SEM_INIT(CREATING_SEM, 0)) == SEM_FAILED) {
+        ERROR
+        exit(EXIT_FAILURE);
+    }
+
+    if ((semaphores->stop_extra_sem = SEM_INIT(STOP_EXTRA_SEM, 0)) == SEM_FAILED) {
         ERROR
         exit(EXIT_FAILURE);
     }
@@ -26,13 +54,26 @@ void semaphores_init(mem_t *mem) {
 }
 
 void semaphores_unlink() {
-    sem_unlink("output_sem");
+    sem_unlink(OUTPUT_SEM);
+    sem_unlink(H_SEM);
+    sem_unlink(O_SEM);
+    sem_unlink(READY_SEM);
+    sem_unlink(CREATED_SEM);
+    sem_unlink(CREATING_SEM);
+    sem_unlink(STOP_EXTRA_SEM);
+
 }
 
 void semaphores_destroy(mem_t *mem) {
     semaphores_t *semaphores = mem->semaphores;
 
-    int close_result = sem_close(semaphores->output_sem);
+    int close_result = sem_close(semaphores->output_sem) ||
+            sem_close(semaphores->h_sem) ||
+            sem_close(semaphores->o_sem) ||
+            sem_close(semaphores->ready_sem) ||
+            sem_close(semaphores->created_sem) ||
+            sem_close(semaphores->creating_sem) ||
+            sem_close(semaphores->stop_extra_sem);
 
     if (close_result == -1) ERROR
 
