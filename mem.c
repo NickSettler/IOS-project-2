@@ -8,20 +8,15 @@
 #include "atom.h"
 
 mem_t *mem_init() {
-    mem_t *mem = malloc(sizeof(mem_t));
-
     key_t key = ftok("main.c", 'c');
 
     int shmid = shmget(key, sizeof(mem_t), 0666 | IPC_CREAT);
 
     if (shmid == -1) ERROR
 
-    void *mem_addr = shmat(shmid, NULL, 0);
-
-    if (mem_addr == (void *) -1) ERROR
+    mem_t *mem = shmat(shmid, NULL, 0);
 
     mem->mem_id = shmid;
-    mem->mem_addr = mem_addr;
 
     return mem;
 }
@@ -45,6 +40,4 @@ void mem_destroy(mem_t *mem) {
     if (control_result == -1) ERROR
 
     shmdt(mem);
-
-    free(mem);
 }
