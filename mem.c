@@ -14,13 +14,11 @@ mem_t *mem_init() {
 
     int shmid = shmget(key, sizeof(mem_t), 0666 | IPC_CREAT);
 
-    if (shmid == -1)
-        print_error("%s:%d %s\n", __FILE__, __LINE__, strerror(errno));
+    if (shmid == -1) ERROR
 
     void *mem_addr = shmat(shmid, NULL, 0);
 
-    if (mem_addr == (void *) -1)
-        print_error("%s:%d %s\n", __FILE__, __LINE__, strerror(errno));
+    if (mem_addr == (void *) -1) ERROR
 
     mem->mem_id = shmid;
     mem->mem_addr = mem_addr;
