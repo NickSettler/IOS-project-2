@@ -63,8 +63,7 @@ void close_output(FILE *output) {
 }
 
 void output_to_file(mem_t *mem, MESSAGE_TYPE type, process_t *process) {
-    FILE *output = mem->output_file;
-    output = stdout;
+    FILE *output = fopen(OUTPUT_FILE_NAME, OUTPUT_FILE_MODE);
     mem->line += 1;
 
     switch (type) {
@@ -90,5 +89,6 @@ void output_to_file(mem_t *mem, MESSAGE_TYPE type, process_t *process) {
         default:
             break;
     }
-}
 
+    fclose(output);
+}
