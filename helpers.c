@@ -6,9 +6,11 @@
 args_t *parse_args(int argc, char **argv) {
     args_t *args = malloc(sizeof(args_t));
 
-    if (argc < 5)
+    if (argc < 5) {
         print_error("Not enough arguments\n"
                     "Usage: ./%s NO NH TI TB\n", argv[0]);
+        exit(EXIT_FAILURE);
+    }
 
     long NO = strtol(argv[1], NULL, 10);
     long NH = strtol(argv[2], NULL, 10);
