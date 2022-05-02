@@ -10,14 +10,24 @@
 #define H_SEM "h_sem"
 #define O_SEM "o_sem"
 #define READY_SEM "ready_sem"
-#define CREATED_SEM "created_sem"
 #define CREATING_SEM "creating_sem"
 #define STOP_EXTRA_SEM "stop_extra_sem"
 
+/**
+ * Initializes semaphores
+ * @param semaphores - struct of semaphores
+ */
 void semaphores_init(semaphores_t *semaphores);
 
+/**
+ * Unlinks semaphores
+ */
 void semaphores_unlink();
 
+/**
+ * Deletes semaphores
+ * @param semaphores - struct of semaphores
+ */
 void semaphores_destroy(semaphores_t *semaphores);
 
 #endif //SEMAPHORES_H

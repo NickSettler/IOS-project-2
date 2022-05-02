@@ -48,20 +48,6 @@ void print_error(char *format, ...) {
     va_end(strings);
 }
 
-FILE *open_output() {
-    FILE *output = fopen(OUTPUT_FILE_NAME, OUTPUT_FILE_MODE);
-
-    if (output == NULL)
-        ERROR
-
-    return output;
-}
-
-void close_output(FILE *output) {
-    if (fclose(output) != 0)
-        ERROR
-}
-
 void remove_output() {
     if (remove(OUTPUT_FILE_NAME) != 0)
         ERROR

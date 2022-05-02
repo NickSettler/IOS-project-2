@@ -8,7 +8,7 @@
 
 /**
  * Initialize memory
- * @return
+ * @return mem_t structure
  */
 mem_t *mem_init();
 

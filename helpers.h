@@ -9,6 +9,9 @@
 #include "main.h"
 #include "process.h"
 
+/**
+ * Prints error to stderr
+ */
 #define ERROR print_error("%s:%d %s\n", __FILE__, __LINE__, strerror(errno));
 
 #define __printflike__ __attribute__((format(printf, 1, 2)))
@@ -29,14 +32,24 @@
  */
 void parse_args(args_t *args, int argc, char **argv);
 
+/**
+ * Prints error to stderr
+ * @param format - format of error message
+ * @param ... - arguments
+ */
 void print_error(char *format, ...) __printflike__;
 
-FILE *open_output();
-
-void close_output(FILE *output);
-
+/**
+ * Removes output file
+ */
 void remove_output();
 
+/**
+ * Prints process output to file
+ * @param mem - shared memory
+ * @param type - type of message
+ * @param process - process
+ */
 void output_to_file(mem_t *mem, MESSAGE_TYPE type, process_t *process);
 
 #endif //HELPERS_H

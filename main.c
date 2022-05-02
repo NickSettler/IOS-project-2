@@ -20,14 +20,17 @@ int main(int argc, char **argv) {
         sem_post(semaphores.stop_extra_sem);
     }
 
+    /* Spawning oxygen processes */
     if (main_id == getpid()) {
         process = fork_process(args.NO, OXYGEN);
     }
 
+    /* Spawning hydrogen processes */
     if (main_id == getpid()) {
         process = fork_process(args.NH, HYDROGEN);
     }
 
+    /* Running subprocesses workflow */
     if (main_id != getpid()) {
         sem_wait(semaphores.output_sem);
 

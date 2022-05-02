@@ -31,11 +31,6 @@ void semaphores_init(semaphores_t *semaphores) {
         exit(EXIT_FAILURE);
     }
 
-    if ((semaphores->created_sem = SEM_INIT(CREATED_SEM, 0)) == SEM_FAILED) {
-        ERROR
-        exit(EXIT_FAILURE);
-    }
-
     if ((semaphores->creating_sem = SEM_INIT(CREATING_SEM, 0)) == SEM_FAILED) {
         ERROR
         exit(EXIT_FAILURE);
@@ -54,7 +49,6 @@ void semaphores_unlink() {
     sem_unlink(H_SEM);
     sem_unlink(O_SEM);
     sem_unlink(READY_SEM);
-    sem_unlink(CREATED_SEM);
     sem_unlink(CREATING_SEM);
     sem_unlink(STOP_EXTRA_SEM);
 
@@ -65,7 +59,6 @@ void semaphores_destroy(semaphores_t *semaphores) {
             sem_close(semaphores->h_sem) ||
             sem_close(semaphores->o_sem) ||
             sem_close(semaphores->ready_sem) ||
-            sem_close(semaphores->created_sem) ||
             sem_close(semaphores->creating_sem) ||
             sem_close(semaphores->stop_extra_sem);
 

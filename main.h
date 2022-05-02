@@ -23,11 +23,21 @@ typedef enum ATOM_TYPE {
     HYDROGEN = 'H',
 } ATOM_TYPE;
 
+/**
+ * @struct atom_t
+ * Atom structure
+ */
 typedef struct atom_t {
+    /* ID of the atom */
     uint id;
+    /* Type of the atom */
     ATOM_TYPE type;
 } atom_t;
 
+/**
+ * @struct semaphores_t
+ * Semaphores used in the program
+ */
 typedef struct semaphores_t {
     /* Semaphore for output to the console */
     sem_t *output_sem;
@@ -35,9 +45,11 @@ typedef struct semaphores_t {
     sem_t *h_sem;
     /* Semaphore for oxygen atom creation */
     sem_t *o_sem;
+    /* Semaphore for detecting when atom is ready */
     sem_t *ready_sem;
-    sem_t *created_sem;
+    /* Semaphore for detecting molecule creation */
     sem_t *creating_sem;
+    /* Semaphore for detecting insufficient resources */
     sem_t *stop_extra_sem;
 } semaphores_t;
 
@@ -50,15 +62,21 @@ typedef struct mem_t {
     int mem_id;
     /* Current output line */
     uint line;
+    /* Current hydrogen to work with */
     uint current_h;
+    /* Current oxygen to work with */
     uint current_o;
+    /* ID of current molecule */
     id_t m_id;
+    /* Number of hydrogen atoms of the molecule */
     uint current_m_h;
-    uint current_m;
 } mem_t;
 
+/**
+ * @struct process_t
+ * Process structure
+ */
 typedef struct process_t {
-    pid_t pid;
     atom_t atom;
     bool extra_info;
 } process_t;
