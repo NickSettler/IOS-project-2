@@ -66,4 +66,9 @@ typedef struct mem_t {
     FILE *output_file;
 } mem_t;
 
+typedef struct process_t {
+    pid_t pid;
+    atom_t atom;
+} process_t;
+
 #endif
