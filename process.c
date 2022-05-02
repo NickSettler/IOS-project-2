@@ -9,22 +9,14 @@
 #include "helpers.h"
 
 void sub_process_oxygen(mem_t *mem, unsigned int atom_id) {
-    sem_wait(mem->semaphores->output_sem);
-    atom_t *atom = NULL;
-    for (unsigned int i = 0; i < mem->o_count; i++) {
-        atom_t *loop_atom = mem->o_vector->data[i];
-
-        if (loop_atom->id == atom_id) {
-            atom = loop_atom;
-            break;
-        }
+    int wait_result = sem_wait(mem->semaphores->output_sem);
+    if(wait_result == -1) {
+        print_error("%s:%d %s\n", __FILE__, __LINE__, strerror(errno));
+        exit(EXIT_FAILURE);
     }
 
-    if(atom == NULL)
-        print_error("Could not find atom with id %d\n", atom_id);
-
-    mem->line++;
-    printf("%d: %c %d: started\n", mem->line, atom->type, atom->id);
+    mem->line = mem->line + 1;
+    printf("%d: %c %d: started\n", mem->line, OXYGEN, atom_id);
     sem_post(mem->semaphores->output_sem);
 
     usleep(RAND_INT(mem->atom_time));
