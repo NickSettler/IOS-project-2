@@ -38,8 +38,6 @@ void mem_fill(mem_t *mem, int NO, int NH, int TI, int TB) {
     mem->current_h = 0;
     mem->current_o = 0;
     mem->output_file = open_output();
-
-    semaphores_init(mem);
 }
 
 void mem_destroy(mem_t *mem) {

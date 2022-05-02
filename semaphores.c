@@ -6,10 +6,9 @@
 #include "semaphores.h"
 #include "helpers.h"
 
-semaphores_t *semaphores_init() {
+void semaphores_init(semaphores_t *semaphores) {
     semaphores_unlink();
 
-    semaphores_t *semaphores = malloc(sizeof(semaphores_t));
     if (semaphores == NULL) {
         ERROR
         exit(EXIT_FAILURE);
@@ -49,8 +48,6 @@ semaphores_t *semaphores_init() {
         ERROR
         exit(EXIT_FAILURE);
     }
-
-    return semaphores;
 }
 
 void semaphores_unlink() {
@@ -76,6 +73,4 @@ void semaphores_destroy(semaphores_t *semaphores) {
     if (close_result == -1) ERROR
 
     semaphores_unlink();
-
-    free(semaphores);
 }

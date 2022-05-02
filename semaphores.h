@@ -14,7 +14,7 @@
 #define CREATING_SEM "creating_sem"
 #define STOP_EXTRA_SEM "stop_extra_sem"
 
-semaphores_t *semaphores_init();
+void semaphores_init(semaphores_t *semaphores);
 
 void semaphores_unlink();
 
