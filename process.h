@@ -9,7 +9,10 @@ typedef struct process_cfg_t {
     atom_t *atom;
 } process_cfg_t;
 
+
 void sub_process_oxygen(mem_t *mem, unsigned int atom_id);
+
+process_t fork_process(unsigned int count, ATOM_TYPE type);
 
 void main_process(mem_t *mem);
 
